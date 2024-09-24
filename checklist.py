@@ -24,12 +24,18 @@ def list_all_items():
     for list_item in checklist:
         print(str(index) + list_item)
         index += 1
-# work on this section
+
 def mark_completed(index): 
     for index in checklist:
         completed = ()
         if completed == "yes":
             print(index.append("√"))
+
+def user_input(prompt):
+    # the input function will display a message in the terminal
+    # and wait for user input.
+    user_input = input(prompt)
+    return user_input
 
 def select(function_code):
     # Create item
@@ -48,15 +54,14 @@ def select(function_code):
     elif function_code == "P":
         list_all_items()
 
+    elif function_code == "Q":
+        # This is where we want to stop our loop
+        return False
     # Catch all
     else:
         print("Unknown Option")
+    return True
 
-def user_input(prompt):
-    # the input function will display a message in the terminal
-    # and wait for user input.
-    user_input = input(prompt)
-    return user_input
 
 def test():
     create("purple sox")
@@ -86,3 +91,9 @@ def test():
 
 # Run Tests
 test()
+
+running = True
+while running:
+    selection = user_input(
+        "Press C to add to list, R to read from list, P to display list, and Q to quit") 
+    running = select(selection)
